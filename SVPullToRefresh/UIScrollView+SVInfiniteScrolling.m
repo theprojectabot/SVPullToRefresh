@@ -10,6 +10,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIScrollView+SVInfiniteScrolling.h"
 
+#import "CDActivityIndicatorView.h"
+
 
 static CGFloat const SVInfiniteScrollingViewHeight = 60;
 
@@ -25,7 +27,7 @@ static CGFloat const SVInfiniteScrollingViewHeight = 60;
 
 @property (nonatomic, copy) void (^infiniteScrollingHandler)(void);
 
-@property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
+@property (nonatomic, strong) CDActivityIndicatorView *activityIndicatorView;
 @property (nonatomic, readwrite) SVInfiniteScrollingState state;
 @property (nonatomic, strong) NSMutableArray *viewForState;
 @property (nonatomic, weak) UIScrollView *scrollView;
@@ -209,7 +211,9 @@ UIEdgeInsets scrollViewOriginalContentInsets;
 
 - (UIActivityIndicatorView *)activityIndicatorView {
     if(!_activityIndicatorView) {
-        _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        //_activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        
+        _activityIndicatorView = [[CDActivityIndicatorView alloc] initWithImage:[UIImage imageNamed:@"refresh-1.png"]];
         _activityIndicatorView.hidesWhenStopped = YES;
         [self addSubview:_activityIndicatorView];
     }
